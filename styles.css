@@ -1,0 +1,121 @@
+.body {
+}
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 80%; /* full with on smaller screens */
+  margin: 0 auto; /* Auto margin on both sides to center the div */
+  padding: 20px; /* Optional padding */
+  border: 1px solid #ccc; /* Optional border for visibility */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Optional shadow for better visibility */
+}
+
+/* Media query for screens wider than 768px */
+@media (min-width: 768px) {
+  .card {
+      max-width: 359px; /* Maximum width on larger screens */
+  }
+}
+
+.portrait-container img {
+  width: 100%; /* Makes the image width fill the container */
+  height: 100%; /* Makes the image height fill the container */
+  object-fit: cover; /* Ensures the image covers the div completely, might crop */
+  object-position: center; /* Centers the image within the div */
+  border-radius: 362px;
+}
+
+.qr-code-container {
+  display: none;
+}
+
+.qr-code-container img {
+  width: 100%; /* Makes the image width fill the container */
+  height: 100%; /* Makes the image height fill the container */
+  object-fit: cover; /* Ensures the image covers the div completely, might crop */
+  object-position: center; /* Centers the image within the div */
+}
+
+.qrjs-container {
+  display:none;
+}
+
+.header {
+}
+
+.header .name {
+  display: block;
+
+  margin-top: 20px;
+
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  font-size: 23.05px;
+  line-height: 27.7px;
+}
+
+.header .position {
+  display: block;
+  margin-top: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.header .company {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.details {
+  margin-top: 15px;
+}
+
+.detail-list-item {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.detail-list-item-icon {
+  display: inline-flex;
+  align-items: center; /* Centers the image vertically */
+  /*height: 50px;  Optionally set a height */
+}
+.detail-list-item-icon img {
+  vertical-align: middle; /* Helps remove bottom space/gap */
+}
+
+.detail-list-item-text {
+  display:inline-block;
+
+  margin-left: 16px;
+
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  line-height: 22.4px;
+}
+
+.detail-list-item-description {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  line-height: 22.4px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.centered-text {
+  display: inline-flex;
+  align-items: center; /* Aligns text vertically */
+  justify-content: center; /* Centers text horizontally if needed */
+  height: 50px; /* Adjust height as needed */
+}
