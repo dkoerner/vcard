@@ -10,15 +10,9 @@ function createQRCodeImage(url, qrContainer) {
       correctLevel: QRCode.CorrectLevel.H
   });
 
-  // The QR code library creates a table-based QR code by default.
-  // Extract the 'img' element if it exists.
-  const qrImage = qrContainer.querySelector('img');
-  
-  // If an 'img' element is not created, you might be using a library version or configuration
-  // that generates a canvas or SVG instead. You need to handle those cases depending on your requirements.
-  // For demonstration, let's assume an 'img' is generated.
-
-  return qrImage;
+  // qrcodejs generates a <canvas> as the FIRST child
+  const canvas = qrContainer.querySelector("canvas");
+  return canvas;
 }
 
 
@@ -44,16 +38,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // generate qr code image
   const url = `https://dkoerner.github.io/vcard/card.html?email=${email}`;
-  const img = createQRCodeImage(url, qrjsContainer);
+  const canvas = createQRCodeImage(url, qrjsContainer);
 
-  // Add an event listener for the 'load' event
-  img.addEventListener('load', function() {
-    qrCodeContainer.innerHTML = ''; // remove all children
-    const newImg = document.createElement("img");
-    newImg.src = img.src;
-    qrCodeContainer.appendChild(newImg);
-  });
+  if (canvas) {
+    // Convert the canvas to PNG data URL
+    const dataUrl = canvas.toDataURL("image/png");
 
+    // Insert a new <img> with the data URL
+    qrCodeContainer.innerHTML = '';
+    const img = document.createElement("img");
+    img.src = dataUrl;
+    //img.style.width = "128px";
+    //img.style.height = "128px";
+    qrCodeContainer.appendChild(img);
+  } else {
+    console.error("QR canvas not found — QR generation failed.");
+  }
 
   function togglePortraitQR() {
     if( portraitContainer.style.display == "none" ) {
